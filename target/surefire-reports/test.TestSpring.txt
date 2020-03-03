@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: test.TestSpring
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.317 s <<< FAILURE! - in test.TestSpring
+run1(test.TestSpring)  Time elapsed: 1.286 s  <<< ERROR!
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'accountService' available
+	at test.TestSpring.run1(TestSpring.java:14)
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 开启对注解的扫描,只处理dao和service -->
+    <context:component-scan base-package="com.glut">
+        <!--配置不扫描的注解-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
+
+    <!-- spring整合mybatis -->
+    <!-- 配置连接池 -->
+    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ssm?serverTimezone=UTC&amp;characterEncoding=utf-8&amp;useUnicode=true"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+    <!-- 配置工厂对象SqlSessionFactory -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="SqlSessionFactory">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath:com/glut/dao/*.xml"/>
+    </bean>
+
+    <!-- 配置dao所在的包 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScanner">
+        <property name="basePackage" value="com.glut.dao"></property>
+    </bean>
+
+    <!-- 配置spring声明式事务管理 -->
+    <!-- 配置spring事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置事务通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="*" isolation="DEFAULT" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置AOP增强-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.glut.service.impl.*.*(..))"></aop:advisor>
+    </aop:config>
+
+</beans>

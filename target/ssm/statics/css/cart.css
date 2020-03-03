@@ -1,0 +1,10 @@
+	@charset "UTF-8";
+	
+	.table th,td{
+		margin-top:20px;
+		text-align:center;
+	}
+	
+	.setcarttitle{
+		text-align:center;
+	}

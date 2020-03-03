@@ -1,0 +1,18 @@
+	@charset "UTF-8";
+	.hotbook_title{
+		margin-top:20px;
+	}
+	
+	.hotbook_body{
+		margin-top:20px;
+	}
+	
+	.allbook{
+		float:right;
+	}
+	
+	#book{
+		width:230px;
+		height:290px;
+	}
+	

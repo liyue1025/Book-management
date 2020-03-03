@@ -1,0 +1,32 @@
+	@charset "UTF-8";
+	
+	.books{
+		overflow:hidden;
+	}
+	.bookphoto{
+		float:left;
+	}
+	.bookinfos{
+		float:left;
+		margin-left:10px;
+	}
+	
+	.bookinfos h3{
+		color:#ff3333;
+	}
+	
+	.info{
+		margin-top:20px;
+	}
+	#cartinput{
+		width: 50px;
+	}
+	
+	.book{
+		width:230px;
+		height: 290px;
+	}
+	
+	.form-group{
+		margin-left:-15px;
+	}

@@ -1,0 +1,15 @@
+	@charset "UTF-8";
+	.form-group{
+		width:300px;
+	}
+	.login{
+		display:table;
+		margin:auto;
+	}
+	.loginbtn{
+		text-align:center;
+	}
+	
+	.setregister a{
+		text-decoration:none;
+	}

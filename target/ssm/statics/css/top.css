@@ -1,0 +1,45 @@
+	@charset "UTF-8";
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+
+	body{
+		padding:0px 20px;
+	}
+
+	.header{
+		
+		margin-top: 20px;
+		
+	}
+
+	.header h4{
+		margin-top: 20px;
+		float: left;
+	}
+	.container-fluid{
+		background-color: #fff;
+	}
+	.logininfo{
+		margin-top:8px;
+		float: right;
+	}
+	.cart{
+		float: right;
+		margin-top:15px;
+		margin-right:20px;
+	}
+
+	.footer{
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.btn-group h5{
+		position:relative;
+		top:-5px;
+	}
+	.btn-group a{
+		text-decoration:none;
+	}
